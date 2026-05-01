@@ -1,0 +1,64 @@
+/* ============================================================
+   BUTTON COMPONENT — Green / Sea-Green / Blue Palette
+   ============================================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    border: none;
+    padding: 13px 30px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-body);
+    text-decoration: none;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.full {
+    width: 100%;
+}
+
+/* ── VARIANTS ── */
+
+.primary {
+    background: var(--blue-deep);
+    color: white;
+}
+
+.primary:hover:not(:disabled) {
+    background: var(--sea);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(14, 116, 144, 0.2);
+}
+
+.outline {
+    background: transparent;
+    color: var(--blue-deep);
+    border: 1.5px solid var(--border);
+}
+
+.outline:hover:not(:disabled) {
+    border-color: var(--sea);
+    color: var(--sea);
+    background: rgba(14, 116, 144, 0.05);
+}
+
+.green {
+    background: var(--green-mid);
+    color: white;
+}
+
+.green:hover:not(:disabled) {
+    background: var(--green-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2);
+}

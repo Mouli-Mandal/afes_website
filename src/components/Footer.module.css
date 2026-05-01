@@ -1,0 +1,295 @@
+/* ============================================================
+   FOOTER — Multi-column, IIT KGP inspired, green/blue palette
+   ============================================================ */
+
+.footer {
+    background: var(--blue-deep);
+    margin-top: 0;
+}
+
+/* ── TOP BAND ── */
+.topBand {
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 60%, #0e4a5e 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem 2rem;
+}
+
+.topBandInner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.topBrandRow {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.footerLogo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.footerLogoCircle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sea) 0%, var(--blue-light) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 14px rgba(14, 116, 144, 0.4);
+}
+
+.footerLogoText {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+}
+
+.footerLogoSub {
+    font-size: 8.5px;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.08em;
+}
+
+.footerBrandName {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+}
+
+.footerBrandSub {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.03em;
+}
+
+.footerTagline {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.8;
+    max-width: 480px;
+    flex: 1;
+    padding-top: 4px;
+}
+
+/* ── SOCIAL ROW ── */
+.socialRow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.socialChip {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    transition: var(--transition);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.socialChip:hover {
+    background: var(--sea);
+    border-color: var(--sea);
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* ── LINK COLUMNS ── */
+.linkBand {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.linkBandInner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1.3fr 1.5fr;
+    gap: 3rem;
+}
+
+.col {}
+
+.colTitle {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sea-light);
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.02em;
+}
+
+.colList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.colLink {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.colLink::before {
+    content: '›';
+    color: var(--sea);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.colLink:hover {
+    color: white;
+    padding-left: 4px;
+}
+
+/* ── CONTACT BLOCK ── */
+.contactBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.contactItem {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+}
+
+.contactIcon {
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* ── VISITOR COUNTER ── */
+.visitorBox {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1rem;
+}
+
+.visitorLabel {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--sea-light);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.visitorDigits {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.digit {
+    width: 24px;
+    height: 28px;
+    background: var(--blue-mid);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--amber-light);
+}
+
+.lastUpdate {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── BOTTOM BAR ── */
+.bottomBar {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.bottomBarInner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.bottomLinks {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.bottomLink {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.bottomLink:hover {
+    color: var(--sea-light);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .linkBandInner {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .topBrandRow {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .linkBandInner {
+        grid-template-columns: 1fr;
+    }
+
+    .bottomBarInner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,294 @@
+/* ============================================================
+   NAVBAR — Dual bar, IIT KGP inspired, green/sea/blue palette
+   ============================================================ */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 16px rgba(10, 35, 66, 0.18);
+}
+
+/* ── TOP UTILITY BAR ── */
+.topBar {
+    background: var(--blue-deep);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.topBarInner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topBarLeft,
+.topBarRight {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.topHomeIcon {
+    font-size: 14px;
+    padding: 0 14px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    background: var(--sea);
+    color: white;
+    margin-right: 2px;
+    transition: var(--transition);
+}
+
+.topHomeIcon:hover {
+    background: var(--sea-mid);
+}
+
+.topLink {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0 12px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.topLink:last-child {
+    border-right: none;
+}
+
+.topLink:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.topBadge {
+    background: var(--green-mid);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-right: 8px;
+}
+
+/* ── MAIN BRAND BAR ── */
+.brandBar {
+    background: var(--white);
+    border-bottom: 3px solid var(--sea);
+}
+
+.brandBarInner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* ── LOGO + NAME ── */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.logoCircle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-deep) 0%, var(--sea) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 2px solid var(--sea-light);
+    box-shadow: 0 2px 10px rgba(14, 116, 144, 0.3);
+}
+
+.logoText {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+}
+
+.logoSub {
+    font-size: 8px;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.08em;
+}
+
+.brandText {
+    display: flex;
+    flex-direction: column;
+}
+
+.brandName {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--blue-deep);
+    line-height: 1.2;
+}
+
+.brandSub {
+    font-size: 10.5px;
+    color: var(--sea);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+}
+
+/* ── MAIN NAV ── */
+.mainNav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navList {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+}
+
+.navLink {
+    display: block;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 8px 13px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    text-decoration: none;
+    position: relative;
+}
+
+.navLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    right: 50%;
+    height: 2px;
+    background: var(--sea);
+    transition: left 0.2s, right 0.2s;
+}
+
+.navLink:hover {
+    color: var(--sea);
+}
+
+.navLink:hover::after {
+    left: 10%;
+    right: 10%;
+}
+
+.navLinkActive {
+    color: var(--sea) !important;
+    font-weight: 600;
+}
+
+.navLinkActive::after {
+    left: 10% !important;
+    right: 10% !important;
+}
+
+/* ── HAMBURGER ── */
+.hamburger {
+    display: none;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+    color: var(--blue-deep);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.hamburger:hover {
+    background: var(--off-white);
+}
+
+/* ── MOBILE MENU ── */
+.mobileMenu {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(10, 35, 66, 0.12);
+}
+
+.mobileLink {
+    padding: 14px 1.5rem;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--border-light);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.mobileLink:hover {
+    background: var(--off-white);
+    color: var(--sea);
+    padding-left: 2rem;
+}
+
+.mobileLinkActive {
+    color: var(--sea) !important;
+    font-weight: 700;
+    background: #f0fdfe;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+    .mainNav {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .brandName {
+        font-size: 13px;
+    }
+
+    .brandBarInner {
+        padding: 0 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .topBar {
+        display: none;
+    }
+
+    .brandSub {
+        display: none;
+    }
+}

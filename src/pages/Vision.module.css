@@ -1,0 +1,429 @@
+/* ============================================================
+   VISION PAGE â€” Full Rich Styles
+   ============================================================ */
+
+.page {
+    animation: fadeUp 0.4s ease both;
+}
+
+/* â”€â”€ PAGE HEADER â”€â”€ */
+.pageHeader {
+    background: linear-gradient(160deg, var(--blue-deep) 0%, var(--blue-mid) 55%, #0f3d22 100%);
+    border-bottom: 2.5px solid var(--amber);
+    padding: 5rem 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.pageHeader::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(30, 110, 62, 0.15);
+    bottom: -160px;
+    right: 10%;
+    pointer-events: none;
+}
+
+.pageHeaderInner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.pageHeaderTag {
+    display: inline-block;
+    background: rgba(200, 149, 42, 0.15);
+    border: 1px solid rgba(200, 149, 42, 0.4);
+    color: var(--amber-light);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.pageHeaderTitle {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: white;
+    margin-bottom: 0.9rem;
+    line-height: 1.15;
+}
+
+.pageHeaderSub {
+    color: #8fafcc;
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+/* â”€â”€ VISION STATEMENT â”€â”€ */
+.visionStatement {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+.quoteBlock {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.quoteMark {
+    font-family: var(--font-display);
+    font-size: 7rem;
+    color: var(--amber);
+    line-height: 0.55;
+    opacity: 0.35;
+    margin-bottom: 0.5rem;
+}
+
+.quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+    color: var(--blue-deep);
+    line-height: 1.5;
+    font-style: italic;
+    margin-bottom: 1.25rem;
+}
+
+.quoteSource {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+}
+
+/* â”€â”€ TIMELINE â”€â”€ */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--green), var(--amber), var(--blue-deep));
+    border-radius: 2px;
+}
+
+.timelineItem {
+    display: flex;
+    gap: 1.75rem;
+    padding-bottom: 2.5rem;
+}
+
+.timelineDot {
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    z-index: 1;
+    box-shadow: 0 0 0 4px var(--cream);
+}
+
+.dot_green {
+    background: var(--green);
+    color: white;
+}
+
+.dot_teal {
+    background: #1D9E75;
+    color: white;
+}
+
+.dot_gold {
+    background: var(--amber);
+    color: var(--blue-deep);
+}
+
+.dot_navy {
+    background: var(--blue-deep);
+    color: white;
+}
+
+.timelineContent {
+    padding-top: 10px;
+}
+
+.timelineLabel {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.label_green {
+    color: var(--green);
+}
+
+.label_teal {
+    color: #1D9E75;
+}
+
+.label_gold {
+    color: var(--amber);
+}
+
+.label_navy {
+    color: var(--blue-mid);
+}
+
+.timelineText {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 660px;
+}
+
+/* â”€â”€ PILLARS â”€â”€ */
+.pillarsSection {
+    background: linear-gradient(160deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.pillarsSection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.012) 40px, rgba(255, 255, 255, 0.012) 41px);
+}
+
+.pillarsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.pillar {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    padding: 2.25rem;
+    text-align: center;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pillar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--green-light), var(--amber));
+    transform: scaleX(0);
+    transition: transform 0.25s;
+    transform-origin: left;
+}
+
+.pillar:hover {
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-3px);
+}
+
+.pillar:hover::after {
+    transform: scaleX(1);
+}
+
+.pillarIcon {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+.pillarTitle {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--amber-light);
+    margin-bottom: 0.75rem;
+}
+
+.pillarBody {
+    font-size: 13.5px;
+    color: #9db8d0;
+    line-height: 1.75;
+}
+
+/* â”€â”€ LIFECYCLE SECTION â”€â”€ */
+.lifecycleSection {
+    background: var(--border-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.lifecycleGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.lifecycleCard {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: var(--transition);
+}
+
+.lifecycleCard:hover {
+    border-color: var(--green);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(13, 31, 60, 0.08);
+}
+
+.lifecycleIcon {
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.lifecycleTitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--blue-deep);
+    margin-bottom: 4px;
+}
+
+.lifecycleBody {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* â”€â”€ MEETINGS TABLE â”€â”€ */
+.meetingsTable {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.tableHead {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 2fr;
+    background: var(--blue-deep);
+    color: white;
+    padding: 1rem 1.5rem;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.tableRow {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 2fr;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    align-items: center;
+    transition: var(--transition);
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.tableRow:hover {
+    background: var(--cream);
+}
+
+.meetingType {
+    font-weight: 600;
+    color: var(--blue-deep);
+    font-size: 14px;
+}
+
+.meetingFreq {
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 500;
+}
+
+.meetingPurpose {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* â”€â”€ QUORUM BANNER â”€â”€ */
+.quorumBanner {
+    background: linear-gradient(135deg, var(--amber) 0%, var(--amber-light) 100%);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 16px rgba(200, 149, 42, 0.25);
+}
+
+.quorumTitle {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--blue-deep);
+    white-space: nowrap;
+}
+
+.quorumDesc {
+    font-size: 13.5px;
+    color: var(--blue-deep);
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+.quorumDesc strong {
+    font-weight: 700;
+}
+
+/* â”€â”€ RESPONSIVE â”€â”€ */
+@media (max-width: 860px) {
+
+    .pillarsGrid,
+    .lifecycleGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .tableHead,
+    .tableRow {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .tableHead span:not(:first-child) {
+        display: none;
+    }
+
+    .pageHeader {
+        padding: 3rem 1.25rem;
+    }
+
+    .timeline::before {
+        left: 21px;
+    }
+}

@@ -1,6 +1,13 @@
-import { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { useState, useRef, useEffect } from 'react'
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom'
 import styles from './Navbar.module.css'
+
+const SOCIAL_LINKS = [
+  { label: 'Instagram', icon: '📸', url: 'https://instagram.com' },
+  { label: 'YouTube',   icon: '▶️', url: 'https://youtube.com' },
+  { label: 'LinkedIn',  icon: '💼', url: 'https://linkedin.com' },
+  { label: 'Twitter / X', icon: '🐦', url: 'https://twitter.com' },
+]
 
 const TOP_LINKS = ['Students', 'Faculty & Staff', 'Visitors', 'Alumni']
 
@@ -13,8 +20,42 @@ const NAV_LINKS = [
   { label: 'Feedback', to: '/feedback' },
 ]
 
+// Map top-bar labels to routes
+const TOP_LINK_ROUTES = {
+  'Students':       '/students',
+  'Faculty & Staff': '/faculty',
+  'Visitors':        '/visitors',
+  'Alumni':          '/alumni',
+}
+
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen]   = useState(false)
+  const [socialOpen, setSocialOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const socialRef = useRef(null)
+
+  // Close social dropdown when clicking outside
+  useEffect(() => {
+    function handleClick(e) {
+      if (socialRef.current && !socialRef.current.contains(e.target)) {
+        setSocialOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  function handleSearch(e) {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+      setSearchOpen(false)
+      setSearchQuery('')
+    }
+  }
 
   return (
     <header className={styles.header}>
@@ -23,17 +64,65 @@ export default function Navbar() {
       <div className={styles.topBar}>
         <div className={styles.topBarInner}>
           <div className={styles.topBarLeft}>
-            <Link to="/" className={styles.topHomeIcon} aria-label="Home">🏠</Link>
-            {TOP_LINKS.map((l) => (
-              <span key={l} className={styles.topLink}>{l}</span>
-            ))}
+            {/* Already present in main brand bar  */}
+            {/* <Link to="/" className={styles.topHomeIcon} aria-label="Home">🏠</Link>  */}
+            {TOP_LINKS.map((l) => {
+              const route = TOP_LINK_ROUTES[l]
+              const isActive = route && pathname === route
+              const cls = [styles.topLink, isActive ? styles.topLinkActive : ''].join(' ')
+              return route
+                ? <Link key={l} to={route} className={cls}>{l}</Link>
+                : <span key={l} className={cls}>{l}</span>
+            })}
           </div>
           <div className={styles.topBarRight}>
             <span className={styles.topBadge}>AY 2025–26</span>
-            <span className={styles.topLink}>Social</span>
-            <span className={styles.topLink}>🔍</span>
+
+            {/* ── SOCIAL DROPDOWN ── */}
+            <div className={styles.socialWrapper} ref={socialRef}>
+              <span
+                className={[styles.topLink, socialOpen ? styles.topLinkActive : ''].join(' ')}
+                onClick={() => setSocialOpen((v) => !v)}
+              >
+                Social ▾
+              </span>
+              {socialOpen && (
+                <div className={styles.socialDropdown}>
+                  {SOCIAL_LINKS.map(({ label, icon, url }) => (
+                    <a
+                      key={label}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.socialItem}
+                      onClick={() => setSocialOpen(false)}
+                    >
+                      <span className={styles.socialIcon}>{icon}</span>
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* ── SEARCH ── */}
+            {searchOpen
+              ? <form className={styles.searchForm} onSubmit={handleSearch}>
+                  <input
+                    autoFocus
+                    className={styles.searchInput}
+                    placeholder="Search…"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <button type="submit" className={styles.searchBtn} aria-label="Search">🔍</button>
+                  <button type="button" className={styles.searchBtn} onClick={() => { setSearchOpen(false); setSearchQuery('') }} aria-label="Close">✕</button>
+                </form>
+              : <span className={styles.topLink} onClick={() => setSearchOpen(true)} aria-label="Open search">🔍</span>
+            }
           </div>
         </div>
+
       </div>
 
       {/* ── MAIN BRAND BAR ── */}

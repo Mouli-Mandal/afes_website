@@ -7,6 +7,11 @@ import Administration from './pages/Administration'
 import Vision from './pages/Vision'
 import Contact from './pages/Contact'
 import Feedback from './pages/Feedback'
+import Students from './pages/Students'
+import Faculty  from './pages/Faculty'
+import Visitors from './pages/Visitors'
+import Alumni   from './pages/Alumni'
+import Search   from './pages/Search'
 
 export default function App() {
   return (
@@ -20,6 +25,11 @@ export default function App() {
           <Route path="/vision"        element={<Vision />} />
           <Route path="/contact"       element={<Contact />} />
           <Route path="/feedback"      element={<Feedback />} />
+          <Route path="/students"      element={<Students />} />
+          <Route path="/faculty"       element={<Faculty />} />
+          <Route path="/visitors"      element={<Visitors />} />
+          <Route path="/alumni"        element={<Alumni />} />
+          <Route path="/search"        element={<Search />} />
           {/* Catch-all → Home */}
           <Route path="*"              element={<Home />} />
         </Routes>

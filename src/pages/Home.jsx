@@ -287,7 +287,7 @@ export default function Home() {
 
           <div className={styles.glassGrid}>
             {FEATURES.map(({ icon, title, body }, i) => (
-              <Reveal key={title} delay={i * 100}>
+              <Reveal key={title} delay={i * 100} className={styles.cardReveal}>
                 <div className={styles.glassCard}>
                   <div className={styles.glassCardOrb} />
                   <div className={styles.glassCardIcon}>{icon}</div>
@@ -364,7 +364,7 @@ export default function Home() {
 
           <div className={styles.benefitsGrid}>
             {BENEFITS.map(({ icon, title, desc }, i) => (
-              <Reveal key={title} delay={i * 80}>
+              <Reveal key={title} delay={i * 80} className={styles.cardReveal}>
                 <div className={styles.benefitGlassCard}>
                   <div className={styles.benefitIcon}>{icon}</div>
                   <div className={styles.benefitTitle}>{title}</div>

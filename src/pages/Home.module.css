@@ -32,7 +32,7 @@
 
 /* ── SCROLL REVEAL ── */
 .reveal {
-    opacity: 0;
+    opacity: 5;
     transform: translateY(30px);
     transition: opacity 0.65s ease, transform 0.65s ease;
 }
@@ -563,6 +563,10 @@
     gap: 1.5rem;
 }
 
+.cardReveal {
+    height: 100%;
+}
+
 /* THE GLASSMORPHISM CARD */
 .glassCard {
     background: rgba(255, 255, 255, 0.05);
@@ -575,6 +579,9 @@
     overflow: hidden;
     transition: all 0.3s ease;
     cursor: default;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .glassCard:hover {
@@ -840,6 +847,9 @@
     padding: 1.75rem 1.25rem;
     text-align: center;
     transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .benefitGlassCard:hover {

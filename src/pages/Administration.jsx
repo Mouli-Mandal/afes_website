@@ -1,22 +1,32 @@
 import styles from './Administration.module.css'
 
-const EXEC_TEAM = [
-  { name: 'Prof. A. K. Singh', position: 'President', role: 'Faculty', dept: 'AgFE Dept' },
-  { name: 'Jane Smith', position: 'Vice President', role: 'Student', dept: 'AgFE Dept' },
-  { name: 'Alex Johnson', position: 'General Secretary', role: 'Student', dept: 'AgFE Dept' },
-]
-
-const PORTFOLIO_HEADS = [
-  { name: 'Alice Brown', position: 'Head of Events', dept: 'AgFE Dept', icon: '📅' },
-  { name: 'Bob Wilson', position: 'Head of PR', dept: 'AgFE Dept', icon: '📢' },
-  { name: 'Charlie Davis', position: 'Head of Finance', dept: 'AgFE Dept', icon: '💰' },
-  { name: 'Diana Evans', position: 'Head of Alumni Relations', dept: 'AgFE Dept', icon: '🤝' },
-]
-
-const ADVISORS = [
-  { name: 'Prof. Alan Turing', spec: 'AI in Agriculture', dept: 'AgFE Dept' },
-  { name: 'Prof. Marie Curie', spec: 'Soil Science', dept: 'AgFE Dept' },
-]
+// Organizational Chart Data
+const ORG_STRUCTURE = {
+  oversight: [
+    { name: 'Prof. A. K. Singh', position: 'President', type: 'oversightMain' },
+    { name: 'Prof. Alan Turing', position: 'Faculty Advisor', type: 'oversightSide' },
+    { name: 'Prof. Marie Curie', position: 'Faculty Advisor', type: 'oversightSide' },
+  ],
+  operationalCore: [
+    { name: 'Jane Smith', position: 'Student Advisor', type: 'studentAdvisor' },
+    { name: 'Alex Johnson', position: 'Vice-President', type: 'vicePresident' },
+    { name: 'Sarah Wilson', position: 'Treasurer', type: 'treasurer' },
+  ],
+  secretary: [
+    { name: 'Michael Chen', position: 'Secretary', type: 'secretary' },
+    { name: 'Emma Davis', position: 'Associate Treasurer', type: 'associateTreasurer' },
+  ],
+  portfolioHeads: [
+    { name: 'Alice Brown', position: 'Website & PR', type: 'portfolioHead' },
+    { name: 'Bob Wilson', position: 'Alumni Relations', type: 'portfolioHead' },
+    { name: 'Charlie Davis', position: 'CDC', type: 'portfolioHead' },
+    { name: 'Diana Evans', position: 'Event Organization', type: 'portfolioHead' },
+  ],
+  execution: [
+    { name: 'James Wilson', position: 'Under-Secretary', type: 'underSecretary' },
+    { name: 'Lisa Anderson', position: 'Associate', type: 'associate' },
+  ],
+}
 
 export default function Administration() {
   return (
@@ -33,104 +43,112 @@ export default function Administration() {
         </div>
       </div>
 
-      {/* ── EXECUTIVE TEAM ── */}
-      <section className="section-wrapper" style={{ paddingTop: '4rem', paddingBottom: '3rem' }}>
-        <p className="section-tag">Leadership</p>
-        <h2 className="section-title">Executive Team</h2>
-        <div className={styles.execGrid}>
-          {EXEC_TEAM.map((member) => (
-            <div key={member.name} className={styles.memberCard}>
-              <div className={styles.memberCardTop}>
-                <div className={`${styles.avatarFallback} ${styles.avatar_lg}`}>
-                  {member.name.replace('Prof. ', '').charAt(0)}
-                </div>
-              </div>
-              <div className={styles.memberCardBody}>
-                <div className={styles.memberName}>{member.name}</div>
-                <div className={styles.memberPosition}>{member.position}</div>
-                <div className={styles.memberRole}>{member.role}</div>
-                <div className={styles.memberDept}>{member.dept}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── PORTFOLIO HEADS ── */}
-      <section className={styles.portfolioHeadsSection}>
-        <div className="section-wrapper" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-          <p className="section-tag">Operations</p>
-          <h2 className="section-title">Portfolio Heads</h2>
-          <div className={styles.portfolioHeadsGrid}>
-            {PORTFOLIO_HEADS.map((ph) => (
-              <div key={ph.name} className={styles.phCard}>
-                <div className={styles.phIcon}>{ph.icon}</div>
-                <div className={styles.phName}>{ph.name}</div>
-                <div className={styles.phPosition}>{ph.position}</div>
-                <div className={styles.phDept}>{ph.dept}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── ORG CHART ── */}
+      {/* ── ORGANIZATIONAL CHART ── */}
       <section className={styles.orgSection}>
         <div className="section-wrapper" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
           <p className="section-tag">Hierarchy</p>
           <h2 className="section-title">Organizational Structure</h2>
-          <div className={styles.orgChart}>
-            <div className={styles.orgRow}>
-              <div className={`${styles.orgBox} ${styles.boxPresident}`}>
-                President
-                <span className={styles.orgSub}>Faculty</span>
+
+          <div className={styles.orgChartContainer}>
+            {/* OVERSIGHT LEVEL */}
+            <div className={styles.orgLevel}>
+              <div className={styles.levelLabel}>Oversight</div>
+              <div className={styles.levelContent}>
+                <div className={styles.oversightRow}>
+                  <OrgBox member={ORG_STRUCTURE.oversight[0]} />
+                  <div className={styles.oversightAdvisors}>
+                    <OrgBox member={ORG_STRUCTURE.oversight[1]} />
+                    <OrgBox member={ORG_STRUCTURE.oversight[2]} />
+                  </div>
+                </div>
               </div>
             </div>
-            <div className={styles.orgConnector}>
-              <div className={styles.orgLine}></div>
-            </div>
-            <div className={styles.orgRow}>
-              <div className={`${styles.orgBox} ${styles.boxVP}`}>
-                Vice President
-                <span className={styles.orgSub}>Student</span>
+
+            {/* Connector */}
+            <div className={styles.levelConnector}></div>
+
+            {/* OPERATIONAL CORE LEVEL */}
+            <div className={styles.orgLevel}>
+              <div className={styles.levelLabel}>Operational Core</div>
+              <div className={styles.levelContent}>
+                <div className={styles.operationalRow}>
+                  <OrgBox member={ORG_STRUCTURE.operationalCore[0]} />
+                  <OrgBox member={ORG_STRUCTURE.operationalCore[1]} />
+                  <OrgBox member={ORG_STRUCTURE.operationalCore[2]} />
+                </div>
               </div>
-              <div className={`${styles.orgBox} ${styles.boxSecretary}`}>
-                General Secretary
-                <span className={styles.orgSub}>Student</span>
+            </div>
+
+            {/* Connector */}
+            <div className={styles.levelConnector}></div>
+
+            {/* SECRETARY & ASSOCIATE TREASURER LEVEL */}
+            <div className={styles.orgLevel}>
+              <div className={styles.levelContent}>
+                <div className={styles.secretaryRow}>
+                  <OrgBox member={ORG_STRUCTURE.secretary[0]} />
+                  <OrgBox member={ORG_STRUCTURE.secretary[1]} />
+                </div>
               </div>
             </div>
-            <div className={styles.orgConnector}>
-              <div className={styles.orgLine}></div>
+
+            {/* Connector */}
+            <div className={styles.levelConnector}></div>
+
+            {/* PORTFOLIO HEADS LEVEL */}
+            <div className={styles.orgLevel}>
+              <div className={styles.levelLabel}>Portfolio Heads</div>
+              <div className={styles.levelContent}>
+                <div className={styles.portfolioRow}>
+                  {ORG_STRUCTURE.portfolioHeads.map((member) => (
+                    <OrgBox key={member.name} member={member} />
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className={styles.orgRow}>
-              <div className={`${styles.orgBox} ${styles.boxPortfolio}`}>
-                Portfolio Heads
-                <span className={styles.orgSub}>Students</span>
+
+            {/* Connector */}
+            <div className={styles.levelConnector}></div>
+
+            {/* EXECUTION LEVEL */}
+            <div className={styles.orgLevel}>
+              <div className={styles.levelLabel}>Execution</div>
+              <div className={styles.levelContent}>
+                <div className={styles.executionRow}>
+                  <OrgBox member={ORG_STRUCTURE.execution[0]} />
+                  <OrgBox member={ORG_STRUCTURE.execution[1]} />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+    </div>
+  )
+}
 
-      {/* ── ADVISORS ── */}
-      <section className="section-wrapper" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
-        <p className="section-tag">Guidance</p>
-        <h2 className="section-title">Faculty Advisors</h2>
-        <div className={styles.advisorGrid}>
-          {ADVISORS.map((advisor) => (
-            <div key={advisor.name} className={styles.advisorCard}>
-              <div className={`${styles.avatarFallback} ${styles.avatar_md}`}>
-                {advisor.name.replace('Prof. ', '').charAt(0)}
-              </div>
-              <div className={styles.advisorInfo}>
-                <div className={styles.advisorName}>{advisor.name}</div>
-                <div className={styles.advisorSpec}>{advisor.spec}</div>
-                <div className={styles.advisorDept}>{advisor.dept}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+// Org Chart Box Component
+function OrgBox({ member }) {
+  const getBoxColor = (type) => {
+    const colorMap = {
+      oversightMain: '#4a6fa5',      // Gray-blue
+      oversightSide: '#2d9d78',       // Teal
+      studentAdvisor: '#2d9d78',      // Teal
+      vicePresident: '#76b041',       // Green
+      treasurer: '#2d9d78',           // Teal
+      secretary: '#76b041',           // Green
+      associateTreasurer: '#76b041',  // Green
+      portfolioHead: '#76b041',       // Green
+      underSecretary: '#2d9d78',      // Teal
+      associate: '#2d9d78',           // Teal
+    }
+    return colorMap[type] || '#4a6fa5'
+  }
+
+  return (
+    <div className={styles.orgBox} style={{ backgroundColor: getBoxColor(member.type) }}>
+      <div className={styles.orgBoxName}>{member.name}</div>
+      <div className={styles.orgBoxPosition}>{member.position}</div>
     </div>
   )
 }

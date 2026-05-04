@@ -27,7 +27,7 @@ const DEPT_LINKS = [
   { label: 'NIRF Rankings', to: 'https://www.nirfindia.org/' },
   { label: 'Student Portal (ERP)', to: 'https://erp.iitkgp.ac.in/SSOAdministration/login.htm?sessionToken=56D08B592CF6F505A68E80CFE5D8CF68.node8&requestedUrl=https://erp.iitkgp.ac.in/IIT_ERP3/' },
   { label: 'Central Library', to: 'https://library.iitkgp.ac.in/' },
-  { label: 'Research Publications', to: '/' },
+  { label: 'Research Publications', to: 'https://www.iitkgp.ac.in/navpage/research' },
 ]
 
 const SOCIALS = [

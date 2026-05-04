@@ -2,7 +2,7 @@ import styles from './Students.module.css'
 
 const RESOURCES = [
   { icon: '📅', label: 'Academic Calendar', desc: 'Semester schedules, exam dates, and important deadlines.', to:'https://www.iitkgp.ac.in/academic-calendar-ug' },
-  { icon: '📋', label: 'Study Materials', desc: 'Class schedules organized by semester and programme.', to:'https://drive.google.com/drive/folders/1FbMJzvdLaICUHgMUtfT5CHl02SxnezhJ'},
+  { icon: '📋', label: 'Study Materials', desc: 'Study resouces organized by semester.', to:'https://drive.google.com/drive/folders/1FbMJzvdLaICUHgMUtfT5CHl02SxnezhJ'},
   { icon: '🏆', label: 'Scholarships', desc: 'Available scholarships, eligibility criteria and application process.', to:'https://www.iitkgp.ac.in/scholarships'},
   { icon: '🏠', label: 'Hostel Info', desc: 'Hostel allocation, facilities, and contact details.', to:'https://hmc.iitkgp.ac.in/web/' },
   { icon: '📊', label: 'Gymkhana', desc: 'Technology Students Gymkhana is the hub of the numerous extra- curricular and co - curricular activities in IIT Kharagpur ranging from sports to socio - cultural.', to:'https://gymkhana.iitkgp.ac.in/'},

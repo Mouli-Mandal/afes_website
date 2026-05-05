@@ -193,6 +193,10 @@ export default function Home() {
           HERO — glassmorphism + animated network
       ══════════════════════════════════════════ */}
       <section className={styles.hero}>
+        {/* Background image + glassmorphism overlay */}
+        <div className={styles.heroBgImage} />
+        <div className={styles.heroBgOverlay} />
+
         {/* Animated network canvas */}
         <NetworkCanvas />
 
@@ -271,79 +275,83 @@ export default function Home() {
       </div>
 
       {/* ══════════════════════════════════════════
-          GLASSMORPHISM PORTFOLIO CARDS
+          COMBINED: PORTFOLIO + ACHIEVEMENTS
+          (single background image spans both)
       ══════════════════════════════════════════ */}
-      <section className={styles.portfolioSection}>
-        <div className={styles.portfolioBg} />
-        <div className={styles.portfolioInner}>
-          <Reveal>
-            <span className={styles.sectionTag}>What We Do</span>
-            <h2 className={styles.sectionTitle}>Four pillars of excellence</h2>
-            <p className={styles.sectionLead}>
-              AFES operates across four specialised portfolios, each creating
-              tangible outcomes for every AgFE member at IIT Kharagpur.
-            </p>
-          </Reveal>
+      <div className={styles.combinedSection}>
 
-          <div className={styles.glassGrid}>
-            {FEATURES.map(({ icon, title, body }, i) => (
-              <Reveal key={title} delay={i * 100} className={styles.cardReveal}>
-                <div className={styles.glassCard}>
-                  <div className={styles.glassCardOrb} />
-                  <div className={styles.glassCardIcon}>{icon}</div>
-                  <h3 className={styles.glassCardTitle}>{title}</h3>
-                  <p className={styles.glassCardBody}>{body}</p>
-                  <div className={styles.glassCardGlow} />
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          ACHIEVEMENTS + PROGRAMMES
-      ══════════════════════════════════════════ */}
-      <section className={styles.achieveSection}>
-        <div className={styles.achieveInner}>
-          <Reveal>
-            <div className={styles.achieveLeft}>
-              <span className={styles.sectionTagDark}>IIT Kharagpur · AgFE</span>
-              <h2 className={styles.achieveTitle}>
-                Proud to be part of<br />India's premier institute
-              </h2>
-              <p className={styles.achieveSub}>
-                IIT Kharagpur ranks among India's top institutions. AFES bridges this
-                academic excellence with real-world industry impact in the agri-tech sector.
+        {/* ── Portfolio Cards ── */}
+        <section className={styles.portfolioSection}>
+          <div className={styles.portfolioBg} />
+          <div className={styles.portfolioInner}>
+            <Reveal>
+              <span className={styles.sectionTag}>What We Do</span>
+              <h2 className={styles.sectionTitle}>Four pillars of excellence</h2>
+              <p className={styles.sectionLead}>
+                AFES operates across four specialised portfolios, each creating
+                tangible outcomes for every AgFE member at IIT Kharagpur.
               </p>
-              <div className={styles.rankGrid}>
-                {ACHIEVEMENTS.map(({ rank, cat, color }) => (
-                  <div key={cat} className={`${styles.rankCard} ${styles[`rank_${color}`]}`}>
-                    <div className={styles.rankNum}>{rank}</div>
-                    <div className={styles.rankCat}>{cat}</div>
-                    <div className={styles.rankSub}>NIRF 2025</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
 
-          <Reveal delay={150}>
-            <div className={styles.achieveRight}>
-              <div className={styles.programmeHeader}>Programmes at AgFE</div>
-              <div className={styles.programmeGrid}>
-                {PROGRAMME_CARDS.map(({ label, sub }) => (
-                  <div key={label} className={styles.programmeCard}>
-                    <div className={styles.programmeLabel}>{label}</div>
-                    <div className={styles.programmeSub}>{sub}</div>
-                    <div className={styles.programmeArrow}>→</div>
+            <div className={styles.glassGrid}>
+              {FEATURES.map(({ icon, title, body }, i) => (
+                <Reveal key={title} delay={i * 100} className={styles.cardReveal}>
+                  <div className={styles.glassCard}>
+                    <div className={styles.glassCardOrb} />
+                    <div className={styles.glassCardIcon}>{icon}</div>
+                    <h3 className={styles.glassCardTitle}>{title}</h3>
+                    <p className={styles.glassCardBody}>{body}</p>
+                    <div className={styles.glassCardGlow} />
                   </div>
-                ))}
-              </div>
+                </Reveal>
+              ))}
             </div>
-          </Reveal>
-        </div>
-      </section>
+          </div>
+        </section>
+
+        {/* ── Achievements + Programmes ── */}
+        <section className={styles.achieveSection}>
+          <div className={styles.achieveInner}>
+            <Reveal>
+              <div className={styles.achieveLeft}>
+                <span className={styles.sectionTagDark}>IIT Kharagpur · AgFE</span>
+                <h2 className={styles.achieveTitle}>
+                  Proud to be part of<br />India's premier institute
+                </h2>
+                <p className={styles.achieveSub}>
+                  IIT Kharagpur ranks among India's top institutions. AFES bridges this
+                  academic excellence with real-world industry impact in the agri-tech sector.
+                </p>
+                <div className={styles.rankGrid}>
+                  {ACHIEVEMENTS.map(({ rank, cat, color }) => (
+                    <div key={cat} className={`${styles.rankCard} ${styles[`rank_${color}`]}`}>
+                      <div className={styles.rankNum}>{rank}</div>
+                      <div className={styles.rankCat}>{cat}</div>
+                      <div className={styles.rankSub}>NIRF 2025</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={150}>
+              <div className={styles.achieveRight}>
+                <div className={styles.programmeHeader}>Programmes at AgFE</div>
+                <div className={styles.programmeGrid}>
+                  {PROGRAMME_CARDS.map(({ label, sub }) => (
+                    <div key={label} className={styles.programmeCard}>
+                      <div className={styles.programmeLabel}>{label}</div>
+                      <div className={styles.programmeSub}>{sub}</div>
+                      <div className={styles.programmeArrow}>→</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+      </div>
 
       {/* ══════════════════════════════════════════
           MEMBERSHIP BENEFITS — glassmorphism

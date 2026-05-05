@@ -47,12 +47,39 @@
 ══════════════════════════════════════════════════ */
 .hero {
     min-height: 100vh;
-    background: radial-gradient(ellipse at 20% 50%, #064e3b 0%, #0f172a 40%, #052e16 70%, #0a2342 100%);
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Background image layer */
+.heroBgImage {
+    position: absolute;
+    inset: 0;
+    background-image: url('/p1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.05);
+    transition: transform 8s ease;
+    will-change: transform;
+}
+
+.hero:hover .heroBgImage {
+    transform: scale(1.0);
+}
+
+/* Dark overlay for contrast (glassmorphism base) */
+.heroBgOverlay {
+    position: absolute;
+    inset: 1;
+    background:
+        linear-gradient(160deg, rgba(6,78,59,0.72) 0%, rgba(15,23,42,0.82) 40%, rgba(5,46,22,0.75) 70%, rgba(10,35,66,0.80) 100%),
+        radial-gradient(ellipse at 20% 50%, rgba(16,185,129,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(8,145,178,0.15) 0%, transparent 55%);
+    backdrop-filter: blur(0px);
 }
 
 /* Animated network canvas */
@@ -157,7 +184,7 @@
     align-items: center;
     gap: 10px;
     background: rgba(16, 185, 129, 0.12);
-    border: 1px solid rgba(16, 185, 129, 0.35);
+    border: 1px solid white;
     backdrop-filter: blur(12px);
     color: #6ee7b7;
     font-size: 11px;
@@ -438,17 +465,18 @@
    ANIMATED STATS BAR
 ══════════════════════════════════════════════════ */
 .statsBar {
-    background: white;
-    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #0f172a 0%, #0d1f3c 100%);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(52,211,153,0.15);
     display: flex;
     justify-content: center;
-    box-shadow: 0 2px 16px rgba(10, 35, 66, 0.07);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.3);
 }
 
 .statItem {
     padding: 1.75rem 2.5rem;
     text-align: center;
-    border-right: 1px solid var(--border);
+    border-right: 1px solid rgba(255,255,255,0.08);
     flex: 1;
     max-width: 220px;
     display: flex;
@@ -463,7 +491,7 @@
 }
 
 .statItem:hover {
-    background: var(--off-white);
+    background: rgba(16,185,129,0.07);
 }
 
 .statIconWrap {
@@ -478,31 +506,61 @@
 }
 
 .statIcon_sea {
-    background: #cffafe;
+    background: rgba(8,145,178,0.18);
+    border: 1px solid rgba(8,145,178,0.3);
 }
 
 .statIcon_green {
-    background: var(--green-pale);
+    background: rgba(16,185,129,0.18);
+    border: 1px solid rgba(16,185,129,0.3);
 }
 
 .statIcon_blue {
-    background: #dbeafe;
+    background: rgba(59,130,246,0.18);
+    border: 1px solid rgba(59,130,246,0.3);
 }
 
 .statNum {
     font-family: var(--font-display);
     font-size: 1.9rem;
     font-weight: 700;
-    color: var(--sea);
+    color: #34d399;
     line-height: 1;
 }
 
 .statLabel {
     font-size: 11px;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.5);
     text-transform: uppercase;
     letter-spacing: 0.09em;
     font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════
+   COMBINED SECTION WRAPPER (Portfolio + Achievements)
+   Single p2.jpg background spans both sub-sections
+══════════════════════════════════════════════════ */
+.combinedSection {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shared background image */
+.combinedSection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/p2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.03);
+    transition: transform 10s ease;
+    z-index: 0;
+}
+
+.combinedSection:hover::before {
+    transform: scale(1.0);
 }
 
 /* ══════════════════════════════════════════════════
@@ -510,51 +568,52 @@
 ══════════════════════════════════════════════════ */
 .portfolioSection {
     position: relative;
-    overflow: hidden;
-    background: linear-gradient(160deg, #0f172a 0%, #064e3b 50%, #0a2342 100%);
+    overflow: visible;
     padding: 6rem 2rem;
 }
 
 .portfolioBg {
     position: absolute;
-    inset: 0;
+    inset: 1;
     pointer-events: none;
+    z-index: 1;
     background:
-        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(16, 185, 129, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(8, 145, 178, 0.1) 0%, transparent 60%),
-        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.01) 40px, rgba(255, 255, 255, 0.01) 41px);
+        linear-gradient(160deg, rgba(15,23,42,0.83) 0%, rgba(6,78,59,0.79) 50%, rgba(10,35,66,0.85) 100%);
 }
 
 .portfolioInner {
+    
     max-width: var(--max-width);
     margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .sectionTag {
+    
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #34d399;
+    color: black;
     font-weight: 700;
-    display: block;
+    display: inline;
     margin-bottom: 0.5rem;
 }
 
 .sectionTitle {
     font-family: var(--font-display);
     font-size: clamp(1.7rem, 3vw, 2.4rem);
-    color: white;
+    color: black;
     margin-bottom: 0.9rem;
 }
 
 .sectionLead {
-    color: rgba(255, 255, 255, 0.6);
+    color:black;
     font-size: 1rem;
     line-height: 1.8;
     max-width: 580px;
     margin-bottom: 3rem;
+    
 }
 
 .glassGrid {
@@ -569,10 +628,10 @@
 
 /* THE GLASSMORPHISM CARD */
 .glassCard {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(20px);
+    background:rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(26, 3, 3, 0.1);
     border-radius: var(--radius-lg);
     padding: 2rem;
     position: relative;
@@ -617,7 +676,7 @@
 .glassCardTitle {
     font-family: var(--font-display);
     font-size: 1.05rem;
-    color: white;
+    color: black;
     margin-bottom: 0.6rem;
     font-weight: 600;
     position: relative;
@@ -626,7 +685,7 @@
 
 .glassCardBody {
     font-size: 13.5px;
-    color: rgba(255, 255, 255, 0.65);
+    color: black;
     line-height: 1.75;
     position: relative;
     z-index: 1;
@@ -637,7 +696,7 @@
     inset: 0;
     border-radius: var(--radius-lg);
     background: linear-gradient(135deg, rgba(52, 211, 153, 0.05) 0%, transparent 60%);
-    opacity: 0;
+    opacity: 0.1;
     transition: opacity 0.3s;
 }
 
@@ -649,8 +708,25 @@
    ACHIEVEMENTS + PROGRAMMES
 ══════════════════════════════════════════════════ */
 .achieveSection {
-    background: var(--off-white);
-    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: visible;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Smooth overlay — transparent at top (blends with dark portfolio above),
+   fades to a light frosted tint for readable text below */
+.achieveSection::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(15,23,42,0.0) 0%,
+        rgba(240,253,244,0.72) 18%,
+        rgba(240,253,244,0.82) 100%
+    );
+    backdrop-filter: blur(2px);
+    z-index: 1;
 }
 
 .achieveInner {
@@ -661,6 +737,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    position: relative;
+    z-index: 2;
 }
 
 .sectionTagDark {
@@ -810,25 +888,43 @@
 .benefitsSection {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(160deg, #052e16 0%, #0a2342 50%, #064e3b 100%);
     padding: 6rem 2rem;
+}
+
+/* Benefits section — p4.jpg background */
+.benefitsSection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/p4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.04);
+    transition: transform 8s ease;
+    z-index: 0;
+}
+
+.benefitsSection:hover::before {
+    transform: scale(1.0);
 }
 
 .benefitsBg {
     position: absolute;
-    inset: 0;
+    inset: 1;
     pointer-events: none;
+    z-index: 1;
     background:
-        radial-gradient(ellipse 50% 60% at 90% 10%, rgba(8, 145, 178, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 5% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 60%),
-        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.008) 40px, rgba(255, 255, 255, 0.008) 41px);
+        linear-gradient(160deg, rgba(5,46,22,0.84) 0%, rgba(10,35,66,0.82) 50%, rgba(6,78,59,0.84) 100%),
+        radial-gradient(ellipse 50% 60% at 90% 10%, rgba(8,145,178,0.14) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 5% 90%, rgba(16,185,129,0.12) 0%, transparent 60%);
 }
 
 .benefitsInner {
     max-width: var(--max-width);
     margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .benefitsGrid {
@@ -867,14 +963,14 @@
 .benefitTitle {
     font-family: var(--font-display);
     font-size: 1rem;
-    color: #a7f3d0;
+    color:black;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
 .benefitDesc {
     font-size: 12.5px;
-    color: rgba(255, 255, 255, 0.6);
+    color:black; 
     line-height: 1.65;
 }
 
@@ -885,10 +981,10 @@
 }
 
 .btnGlassWhite {
-    background: rgba(255, 255, 255, 0.12);
+    background: #fefcfc;
     backdrop-filter: blur(16px);
     border: 1.5px solid rgba(255, 255, 255, 0.3);
-    color: white;
+    color:black ;
     padding: 15px 40px;
     border-radius: 8px;
     font-size: 15px;
@@ -910,18 +1006,37 @@
    CTA BANNER
 ══════════════════════════════════════════════════ */
 .ctaBanner {
-    background: linear-gradient(135deg, var(--sea) 0%, var(--green-mid) 100%);
     padding: 5rem 3rem;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
+/* CTA Banner — p5.jpg background */
 .ctaBanner::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255, 255, 255, 0.03) 30px, rgba(255, 255, 255, 0.03) 31px);
+    background-image: url('/p5.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.04);
+    transition: transform 8s ease;
+    z-index: 0;
+}
+
+.ctaBanner:hover::before {
+    transform: scale(1.0);
+}
+
+.ctaBanner::after {
+    content: '';
+    position: absolute;
+    inset: 1;
+    background: linear-gradient(135deg, rgba(4,120,87,0.82) 0%, rgba(5,150,105,0.78) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255,255,255,0.025) 30px, rgba(255,255,255,0.025) 31px);
+    z-index: 1;
 }
 
 .ctaTitle {
@@ -930,6 +1045,7 @@
     color: white;
     margin-bottom: 0.75rem;
     position: relative;
+    z-index: 2;
 }
 
 .ctaSub {
@@ -940,6 +1056,7 @@
     max-width: 540px;
     margin-inline: auto;
     position: relative;
+    z-index: 2;
 }
 
 .ctaBtns {
@@ -948,6 +1065,7 @@
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
+    z-index: 2;
 }
 
 .btnSolid {

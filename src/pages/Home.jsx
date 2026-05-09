@@ -354,7 +354,7 @@ export default function Home() {
       </div>
 
       {/* ══════════════════════════════════════════
-          MEMBERSHIP BENEFITS — glassmorphism
+          Combine MEMBERSHIP BENEFITS — glassmorphism and  CTA BANNER
       ══════════════════════════════════════════ */}
       <section className={styles.benefitsSection}>
         <div className={styles.benefitsBg} />
@@ -390,12 +390,12 @@ export default function Home() {
             </div>
           </Reveal>
         </div>
-      </section>
+      {/* </section> */}
 
       {/* ══════════════════════════════════════════
           CTA BANNER
       ══════════════════════════════════════════ */}
-      <section className={styles.ctaBanner}>
+      {/* <section className={styles.ctaBanner}> */}
         <Reveal>
           <h2 className={styles.ctaTitle}>Ready to make an impact?</h2>
           <p className={styles.ctaSub}>

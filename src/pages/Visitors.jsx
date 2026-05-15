@@ -1,12 +1,12 @@
 import styles from './Visitors.module.css'
 
 const RESOURCES = [
-  { icon: '🗺️', title: 'Campus Map', desc: 'Navigate the IIT Kharagpur campus and locate the AgFE department easily.' },
-  { icon: '🚗', title: 'How to Reach', desc: 'Directions by road, rail, and air to IIT Kharagpur campus.' },
-  { icon: '🏨', title: 'Guest House', desc: 'On-campus guest house information, booking details and amenities.' },
-  { icon: '📞', title: 'Contact & Reception', desc: 'Department reception contacts for visitor queries and appointments.' },
-  { icon: '📋', title: 'Visit Guidelines', desc: 'Visitor entry procedures, security protocols and campus rules.' },
-  { icon: '🎓', title: 'Department Overview', desc: 'Learn about the Agricultural & Food Engineering department and its offerings.' },
+  { icon: '🗺️', label: 'Campus Map and How to Reach', desc: 'Navigate the IIT Kharagpur campus and locate the AgFE department easily.', to: 'https://www.iitkgp.ac.in/how-to-reach' },
+  // { icon: '🚗', label: '', desc: 'Directions by road, rail, and air to IIT Kharagpur campus.', to: '/' },
+  { icon: '🏨', label: 'Guest House', desc: 'On-campus guest house information, booking details and amenities.', to: 'http://alumni.iitkgp.ac.in/alumni_services' },
+  { icon: '📞', label: 'Contact & Reception', desc: 'Department reception contacts for visitor queries and appointments.', to: '/' },
+  { icon: '📋', label: 'Visit Guidelines', desc: 'Visitor entry procedures, security protocols and campus rules.', to: '/' },
+  { icon: '🎓', label: 'Department Overview', desc: 'Learn about the Agricultural & Food Engineering department and its offerings.', to: 'https://www.iitkgp.ac.in/department/AG' },
 ]
 
 export default function Visitors() {
@@ -33,12 +33,20 @@ export default function Visitors() {
           All the information you need before and during your visit to our department.
         </p>
         <div className={styles.grid}>
-          {RESOURCES.map(({ icon, title, desc }) => (
-            <div key={title} className={styles.card}>
+          {RESOURCES.map(({ icon, label, desc, to }) => (
+            <a
+              key={to}
+              href={to || '#'}
+              className={styles.card}
+              teaget="_blank"
+              rel=""
+              style={{ textDecoration: 'none', color: 'inherit', pointerEvents: to ? 'auto' : 'none', opacity: to ? 1 : 0.6 }}
+            >
+              {/* <div key={title} className={styles.card}> */}
               <span className={styles.cardIcon}>{icon}</span>
-              <div className={styles.cardTitle}>{title}</div>
+              <div className={styles.cardTitle}>{label}</div>
               <div className={styles.cardDesc}>{desc}</div>
-            </div>
+            </a>
           ))}
         </div>
       </section>

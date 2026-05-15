@@ -1,12 +1,12 @@
 import styles from './Alumni.module.css'
 
 const RESOURCES = [
-  { icon: '🤝', title: 'Alumni Network', desc: 'Connect with fellow AgFE alumni across industries and geographies.' },
-  { icon: '💼', title: 'Career Opportunities', desc: 'Job postings, referrals and career opportunities shared by alumni.' },
-  { icon: '🏆', title: 'Notable Alumni', desc: 'Distinguished alumni who have made a mark in their respective fields.' },
-  { icon: '📰', title: 'Alumni Newsletter', desc: 'Stay updated with the latest news, achievements and events.' },
-  { icon: '🎓', title: 'Mentorship Program', desc: 'Volunteer as a mentor to guide current AgFE students in their careers.' },
-  { icon: '🏛️', title: 'Give Back', desc: 'Contribute to scholarships, research, and infrastructure development.' },
+  { icon: '🤝', label: 'Alumni Network', desc: 'Connect with fellow AgFE alumni across industries and geographies.', to: 'http://alumni.iitkgp.ac.in/' },
+  { icon: '💼', label: 'Career Opportunities', desc: 'Job postings, referrals and career opportunities shared by alumni.', to: 'https://iitkgp.almaconnect.com/' },
+  { icon: '🏆', label: 'Notable Alumni', desc: 'Distinguished alumni who have made a mark in their respective fields.', to: '/' },
+  { icon: '📰', label: 'Alumni Newsletter', desc: 'Stay updated with the latest news, achievements and events.', to: 'https://kgpchronicle.iitkgp.ac.in/' },
+  { icon: '🎓', label: 'Mentorship Program', desc: 'Volunteer as a mentor to guide current AgFE students in their careers.', to: '/' },
+  { icon: '🏛️', label: 'Give Back', desc: 'Contribute to scholarships, research, and infrastructure development.', to: 'http://alumni.iitkgp.ac.in/giving_back' },
 ]
 
 export default function Alumni() {
@@ -33,12 +33,19 @@ export default function Alumni() {
           Connect, mentor, and contribute to the growing AFES alumni community.
         </p>
         <div className={styles.grid}>
-          {RESOURCES.map(({ icon, title, desc }) => (
-            <div key={title} className={styles.card}>
+          {RESOURCES.map(({ icon, label, desc, to }) => (
+            <a
+              key={to}
+              href={to || '#'}
+              className={styles.card}
+              style={{ textDecoration: 'none', color: 'inherit', pointerEvents: to ? 'auto' : 'none', opacity: to ? 1 : 0.6 }}
+
+            >
+              {/* < key={title} className={styles.card}> */}
               <span className={styles.cardIcon}>{icon}</span>
-              <div className={styles.cardTitle}>{title}</div>
+              <div className={styles.cardTitle}>{label}</div>
               <div className={styles.cardDesc}>{desc}</div>
-            </div>
+            </a>
           ))}
         </div>
       </section>

@@ -5,73 +5,73 @@ import styles from './Administration.module.css'
 const ORG_STRUCTURE = {
   oversight: [
     // President / Faculty Advisors — not in VCF; kept as placeholders
-    { name: 'President', position: 'President', type: 'oversightMain', phone: null },
-    { name: 'Faculty Advisor', position: 'Faculty Advisor', type: 'oversightSide', phone: null },
+    { name: 'President', position: 'President', type: 'oversightMain' },
+    { name: 'Faculty Advisor', position: 'Faculty Advisor', type: 'oversightSide' },
   ],
 
   studentAdvisors: [
-    { name: 'Hrick Bose',         position: 'Student Advisor', type: 'studentAdvisor', phone: '9630174316' },
-    { name: 'Mantej Singh Sohi',  position: 'Student Advisor', type: 'studentAdvisor', phone: '8699177818' },
+    { name: 'Hrick Bose', position: 'Student Advisor', type: 'studentAdvisor' },
+    { name: 'Mantej Singh Sohi', position: 'Student Advisor', type: 'studentAdvisor' },
   ],
 
   vicePresident: [
-    { name: 'Dhara Soni', position: 'Vice-President', type: 'vicePresident', phone: '6200412754' },
+    { name: 'Dhara Soni', position: 'Vice-President', type: 'vicePresident' },
   ],
 
   treasurer: [
     // Not present in VCF — kept as placeholder
-    { name: 'Treasurer', position: 'Treasurer', type: 'treasurer', phone: null },
+    { name: 'Treasurer', position: 'Treasurer', type: 'treasurer' },
   ],
 
   secretary: [
-    { name: 'Kuntal Pal', position: 'Secretary', type: 'secretary', phone: '6296641845' },
+    { name: 'Kuntal Pal', position: 'Secretary', type: 'secretary' },
   ],
 
   associateTreasurer: [
-    { name: 'Smrutishree Tripathy', position: 'Associate Treasurer', type: 'associateTreasurer', phone: '9827997411' },
-    { name: 'Rajshekhar Upadhyay', position: 'Associate Treasurer', type: 'associateTreasurer', phone: '9137454490' },
+    { name: 'Smrutishree Tripathy', position: 'Associate Treasurer', type: 'associateTreasurer' },
+    { name: 'Rajshekhar Upadhyay', position: 'Associate Treasurer', type: 'associateTreasurer' },
   ],
 
   portfolioHeads: {
     websitePR: [
-      { name: 'Rakesh Kr. Verma', position: 'Website & PR', type: 'portfolioHead', phone: '7484073950' },
-      { name: 'Nishant Kumawat',  position: 'Website & PR', type: 'portfolioHead', phone: '8302963154' },
-      { name: 'Jayant Saini',     position: 'Website & PR', type: 'portfolioHead', phone: '7404702327' },
-      { name: 'Mouli Mandal',     position: 'Website & PR', type: 'portfolioHead', phone: '9593105208' },
-      { name: 'Roushan Kumar',    position: 'Website & PR', type: 'portfolioHead', phone: '9031137470' },
+      { name: 'Nishant Kumawat', type: 'portfolioHead' },
+      { name: 'Mouli Mandal', type: 'portfolioHead' },
+      { name: 'Roushan Kumar', type: 'portfolioHead' },
+      { name: 'Rakesh Kr. Verma', type: 'portfolioHead' },
+      { name: 'Jayant Saini', type: 'portfolioHead' },
     ],
     alumniRelations: [
-      { name: 'Nirmal Patidar',    position: 'Alumni Relations', type: 'portfolioHead', phone: '9165905280' },
-      { name: 'Jyotshna Rani',    position: 'Alumni Relations', type: 'portfolioHead', phone: '8341425479' },
-      { name: 'Arjun Gupta',      position: 'Alumni Relations', type: 'portfolioHead', phone: '7879590186' },
-      { name: 'Nimay Agarwal',    position: 'Alumni Relations', type: 'portfolioHead', phone: '9993326196' },
-      { name: 'Rutthvick Trehan', position: 'Alumni Relations', type: 'portfolioHead', phone: '9599554201' },
+      { name: 'Nirmal Patidar', type: 'portfolioHead' },
+      { name: 'Rutthvick Trehan', type: 'portfolioHead' },
+      { name: 'Jyotshna Rani', type: 'portfolioHead' },
+      { name: 'Arjun Gupta', type: 'portfolioHead' },
+      { name: 'Nimay Agarwal', type: 'portfolioHead' },
     ],
     cdc: [
-      { name: 'Sri Raghav Tanikella', position: 'CDC', type: 'portfolioHead', phone: '9940046078' },
-      { name: 'Ankit Kumar',          position: 'CDC', type: 'portfolioHead', phone: '6205201375' },
-      { name: 'Ashish Kumar',         position: 'CDC', type: 'portfolioHead', phone: '8899240987' },
-      { name: 'Anshu Kumar',          position: 'CDC', type: 'portfolioHead', phone: '8877448982' },
-      { name: 'Mohd Ismail',          position: 'CDC', type: 'portfolioHead', phone: '9311091344' },
-      { name: 'Sahil Bisen',          position: 'CDC', type: 'portfolioHead', phone: '9689826505' },
-      { name: 'Devansh Agarwal',      position: 'CDC', type: 'portfolioHead', phone: null },
+      { name: 'Ashish Kumar', type: 'portfolioHead' },
+      { name: 'Sri Raghav Tanikella', type: 'portfolioHead' },
+      { name: 'Ankit Kumar', type: 'portfolioHead' },
+      { name: 'Anshu Kumar', type: 'portfolioHead' },
+      { name: 'Mohd Ismail', type: 'portfolioHead' },
+      { name: 'Sahil Bisen', type: 'portfolioHead' },
+      { name: 'Devansh Agarwal', type: 'portfolioHead' },
     ],
     eventOrg: [
-      { name: 'Anukul Das',    position: 'Event Organization', type: 'portfolioHead', phone: '7479307611' },
-      { name: 'Kashish Singh', position: 'Event Organization', type: 'portfolioHead', phone: '7060052817' },
-      { name: 'Yamini Priya',  position: 'Event Organization', type: 'portfolioHead', phone: '6300523621' },
-      { name: 'Kumkum Gorai',  position: 'Event Organization', type: 'portfolioHead', phone: '7320809248' },
-      { name: 'Nidhi',         position: 'Event Organization', type: 'portfolioHead', phone: '9121020404' },
-      { name: 'Vaskar Kundu',  position: 'Event Organization', type: 'portfolioHead', phone: '8617350165' },
-      { name: 'Anuruddh Kumar',position: 'Event Organization', type: 'portfolioHead', phone: '8604993521' },
-      { name: 'Kasu Suji',     position: 'Event Organization', type: 'portfolioHead', phone: '8897206614' },
+      { name: 'Anukul Das', type: 'portfolioHead' },
+      { name: 'Kashish Singh', type: 'portfolioHead' },
+      { name: 'Yamini Priya', type: 'portfolioHead' },
+      { name: 'Kumkum Gorai', type: 'portfolioHead' },
+      { name: 'Nidhi', type: 'portfolioHead' },
+      { name: 'Vaskar Kundu', type: 'portfolioHead' },
+      { name: 'Anuruddh Kumar', type: 'portfolioHead' },
+      { name: 'Kasu Suji', type: 'portfolioHead' },
     ],
   },
 
   // Under-secretary / Associate not in VCF — shown as structural placeholders
   execution: [
-    { name: 'Under-Secretary', position: 'Under-Secretary', type: 'underSecretary', phone: null },
-    { name: 'Associate',       position: 'Associate',       type: 'associate',      phone: null },
+    { name: 'Under-Secretary', position: 'Under-Secretary', type: 'underSecretary' }, 
+    { name: 'Associate', position: 'Associate', type: 'associate' },
   ],
 }
 
@@ -79,25 +79,25 @@ const ORG_STRUCTURE = {
 const PORTFOLIO_CONFIG = [
   {
     key: 'websitePR',
-    label: 'Website & Public Relations',
+    label: 'Website & Public Relations Heads',
     icon: '🌐',
     accent: '#4e9af1',
   },
   {
     key: 'alumniRelations',
-    label: 'Alumni Relations',
+    label: 'Alumni Relations Heads',
     icon: '🤝',
     accent: '#a78bfa',
   },
   {
     key: 'cdc',
-    label: 'CDC',
+    label: 'CDC Heads',
     icon: '💼',
     accent: '#34d399',
   },
   {
     key: 'eventOrg',
-    label: 'Event Organization',
+    label: 'Event Organization Heads',
     icon: '🎉',
     accent: '#f97316',
   },
@@ -105,16 +105,16 @@ const PORTFOLIO_CONFIG = [
 
 // ─── Colour map ───────────────────────────────────────────────────────────────
 const COLOR_MAP = {
-  oversightMain:      '#4a6fa5',
-  oversightSide:      '#2d9d78',
-  studentAdvisor:     '#2d9d78',
-  vicePresident:      '#76b041',
-  treasurer:          '#2d9d78',
-  secretary:          '#76b041',
+  oversightMain: '#4a6fa5',
+  oversightSide: '#2d9d78',
+  studentAdvisor: '#2d9d78',
+  vicePresident: '#76b041',
+  treasurer: '#2d9d78',
+  secretary: '#76b041',
   associateTreasurer: '#76b041',
-  portfolioHead:      '#76b041',
-  underSecretary:     '#2d9d78',
-  associate:          '#2d9d78',
+  portfolioHead: '#76b041',
+  underSecretary: '#2d9d78',
+  associate: '#2d9d78',
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -167,13 +167,7 @@ function MemberCard({ member, accent }) {
       </div>
       <div className={styles.memberName}>{member.name}</div>
       <div className={styles.memberRole}>{member.position}</div>
-      {member.phone ? (
-        <a href={`tel:${member.phone}`} className={styles.memberPhone}>
-          📞 {member.phone}
-        </a>
-      ) : (
-        <span className={styles.memberPhoneNA}>No contact listed</span>
-      )}
+
     </div>
   )
 }
@@ -202,91 +196,11 @@ export default function Administration() {
           <h2 className="section-title">Organizational Structure</h2>
 
           <div className={styles.orgChartContainer}>
-
-            {/* ── OVERSIGHT ── */}
-            <div className={styles.orgLevel}>
-              <div className={styles.levelLabel}>Oversight</div>
-              <div className={styles.levelContent}>
-                <div className={styles.oversightRow}>
-                  <OrgBox member={ORG_STRUCTURE.oversight[0]} />
-                  <div className={styles.oversightAdvisors}>
-                    <OrgBox member={ORG_STRUCTURE.oversight[1]} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.levelConnector} />
-
-            {/* ── OPERATIONAL CORE ── */}
-            <div className={styles.orgLevel}>
-              <div className={styles.levelLabel}>Operational Core</div>
-              <div className={styles.levelContent}>
-                <div className={styles.operationalRow}>
-                  {/* Student Advisors */}
-                  <div className={styles.advisorsStack}>
-                    {ORG_STRUCTURE.studentAdvisors.map((m) => (
-                      <OrgBox key={m.name} member={m} compact />
-                    ))}
-                  </div>
-                  {/* Vice President */}
-                  <OrgBox member={ORG_STRUCTURE.vicePresident[0]} />
-                  {/* Treasurer */}
-                  <OrgBox member={ORG_STRUCTURE.treasurer[0]} />
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.levelConnector} />
-
-            {/* ── SECRETARY & ASSOCIATE TREASURER ── */}
-            <div className={styles.orgLevel}>
-              <div className={styles.levelContent}>
-                <div className={styles.secretaryRow}>
-                  <OrgBox member={ORG_STRUCTURE.secretary[0]} />
-                  <div className={styles.assocTreasurerStack}>
-                    {ORG_STRUCTURE.associateTreasurer.map((m) => (
-                      <OrgBox key={m.name} member={m} compact />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.levelConnector} />
-
-            {/* ── PORTFOLIO HEADS (structural row) ── */}
-            <div className={styles.orgLevel}>
-              <div className={styles.levelLabel}>Portfolio Heads</div>
-              <div className={styles.levelContent}>
-                <div className={styles.portfolioRow}>
-                  {PORTFOLIO_CONFIG.map((p) => (
-                    <div
-                      key={p.key}
-                      className={styles.orgBox}
-                      style={{ backgroundColor: COLOR_MAP.portfolioHead, minWidth: 120 }}
-                    >
-                      <div className={styles.orgBoxName}>{p.icon} {p.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.levelConnector} />
-
-            {/* ── EXECUTION ── */}
-            <div className={styles.orgLevel}>
-              <div className={styles.levelLabel}>Execution</div>
-              <div className={styles.levelContent}>
-                <div className={styles.executionRow}>
-                  {ORG_STRUCTURE.execution.map((m) => (
-                    <OrgBox key={m.name} member={m} />
-                  ))}
-                </div>
-              </div>
-            </div>
-
+            <img
+              src="/p7.png"
+              alt="AFES Executive Ecosystem – Organizational Structure"
+              className={styles.orgChartImage}
+            />
           </div>
         </div>
       </section>
@@ -295,7 +209,7 @@ export default function Administration() {
       <section className={styles.portfolioSection}>
         <div className="section-wrapper" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
           <p className="section-tag">Members</p>
-          <h2 className="section-title">Portfolio-wise Contacts</h2>
+          <h2 className="section-title">OUR TEAM</h2>
 
           {/* ── Operational Leaders ── */}
           <div className={styles.portfolioBlock}>

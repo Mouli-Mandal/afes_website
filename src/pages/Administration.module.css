@@ -385,8 +385,18 @@
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 3rem 2rem;
+    padding: 2rem;
     overflow-x: auto;
+    text-align: center;
+}
+
+.orgChartImage {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: var(--radius-md);
+    display: block;
+    margin: 0 auto;
 }
 
 .orgLevel {

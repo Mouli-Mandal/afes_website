@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.css'
 
@@ -38,6 +39,35 @@ const SOCIALS = [
 ]
 
 export default function Footer() {
+
+  const [visitorCount, setVisitorCount] = useState(null)
+
+  useEffect(() => {
+    const SESSION_KEY = 'afes_visitor_counted'
+
+
+    const alreadyCounted = sessionStorage.getItem(SESSION_KEY)
+
+    const endpoint = alreadyCounted
+      ? 'https://countapi.mileshilliard.com/api/v1/get/afes-iitkgp-visitor-count'
+      : 'https://countapi.mileshilliard.com/api/v1/hit/afes-iitkgp-visitor-count'
+
+    fetch(endpoint)
+      .then(res => res.json())
+      .then(data => {
+        setVisitorCount(data.value)
+        if (!alreadyCounted) {
+          sessionStorage.setItem(SESSION_KEY, 'true')
+        }
+      })
+      .catch(() => setVisitorCount(551112))
+  }, [])
+
+
+  const digits = visitorCount !== null
+    ? String(visitorCount).padStart(6, '0').split('')
+    : ['0', '0', '0', '0', '0', '0'] // shown while loading
+
   return (
     <footer className={styles.footer}>
 
@@ -145,8 +175,10 @@ export default function Footer() {
             <div className={styles.visitorBox}>
               <span className={styles.visitorLabel}>Visitors</span>
               <div className={styles.visitorDigits}>
-                {['0', '1', '2', '4', '8', '3'].map((d, i) => (
+
+                {digits.map((d, i) => (
                   <span key={i} className={styles.digit}>{d}</span>
+
                 ))}
               </div>
               <div className={styles.lastUpdate}>Last Update: {new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' })}</div>

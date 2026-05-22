@@ -47,7 +47,7 @@ const NEWS = [
 ]
 
 const STATS = [
-  { icon: '🎓', num: '1000+', label: 'Student Members', color: 'sea' },
+  { icon: '🎓', num: '31+', label: 'Student Members', color: 'sea' },
   { icon: '🏭', num: '4', label: 'Core Portfolios', color: 'green' },
   { icon: '👨‍🏫', num: '10', label: 'Faculty Advisors', color: 'blue' },
   { icon: '🤝', num: '200+', label: 'Alumni Network', color: 'sea' },
@@ -232,7 +232,7 @@ export default function Home() {
           </div>
 
           {/* Glass stat chips in hero */}
-          <div className={styles.heroChips}>
+          {/* <div className={styles.heroChips}>
             {STATS.map(({ icon, num, label }) => (
               <div key={label} className={styles.heroChip}>
                 <span>{icon}</span>
@@ -240,7 +240,7 @@ export default function Home() {
                 <span className={styles.heroChipLabel}>{label}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* Scroll cue */}

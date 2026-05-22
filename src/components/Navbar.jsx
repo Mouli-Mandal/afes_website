@@ -132,8 +132,9 @@ export default function Navbar() {
           {/* Logo + Name */}
           <Link to="/" className={styles.brand}>
             <div className={styles.logoCircle}>
-              <span className={styles.logoText}>AFES</span>
-              <span className={styles.logoSub}>IIT KGP</span>
+              {/* <span className={styles.logoText}>AFES</span> */}
+              {/* <span className={styles.logoSub}>IIT KGP</span> */}
+              <img src = "/logo.png" />
             </div>
             <div className={styles.brandText}>
               <div className={styles.brandName}>Agricultural &amp; Food Engineering Society</div>

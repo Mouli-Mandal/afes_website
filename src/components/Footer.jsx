@@ -47,8 +47,9 @@ export default function Footer() {
           <div className={styles.topBrandRow}>
             <div className={styles.footerLogo}>
               <div className={styles.footerLogoCircle}>
-                <span className={styles.footerLogoText}>AFES</span>
-                <span className={styles.footerLogoSub}>IIT KGP</span>
+                {/* <span className={styles.footerLogoText}>AFES</span> */}
+                {/* <span className={styles.footerLogoSub}>IIT KGP</span> */}
+                <img src="/logo.png" />
               </div>
               <div>
                 <div className={styles.footerBrandName}>

@@ -709,7 +709,8 @@
 .achieveSection {
     position: relative;
     overflow: visible;
-    border-bottom: 1px solid white;
+    border-bottom: 2px solid ;
+    background: linear-gradient(180deg, #0f172a 0%, #0d1f3c 100%)
 }
 
 /* Smooth overlay — transparent at top (blends with dark portfolio above),
@@ -731,10 +732,10 @@
 .achieveInner {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: var(--section-pad);
+    padding: 1.5rem ;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 2rem;
     align-items: start;
     position: relative;
     z-index: 2;
@@ -822,7 +823,7 @@
     margin-top: 2px;
 }
 
-.achieveRight {}
+/* .achieveRight {} */
 
 .programmeHeader {
     font-family: var(--font-display);

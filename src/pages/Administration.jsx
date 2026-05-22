@@ -1,6 +1,6 @@
 import styles from './Administration.module.css'
 
-// ─── Real member data parsed from AFES_Contacts.vcf ───────────────────────────
+// Real member data parsed from AFES_Contacts.vcf
 
 const ORG_STRUCTURE = {
   oversight: [
@@ -68,11 +68,6 @@ const ORG_STRUCTURE = {
     ],
   },
 
-  // Under-secretary / Associate not in VCF — shown as structural placeholders
-  execution: [
-    { name: 'Under-Secretary', position: 'Under-Secretary', type: 'underSecretary' }, 
-    { name: 'Associate', position: 'Associate', type: 'associate' },
-  ],
 }
 
 // ─── Portfolio configuration (label, icon, colour accent) ────────────────────

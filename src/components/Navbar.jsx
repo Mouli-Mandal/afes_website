@@ -4,8 +4,8 @@ import styles from './Navbar.module.css'
 
 const SOCIAL_LINKS = [
   { label: 'Instagram', icon: '📸', url: 'https://instagram.com' },
-  { label: 'YouTube',   icon: '▶️', url: 'https://youtube.com' },
-  { label: 'LinkedIn',  icon: '💼', url: 'https://linkedin.com' },
+  { label: 'YouTube', icon: '▶️', url: 'https://youtube.com' },
+  { label: 'LinkedIn', icon: '💼', url: 'https://linkedin.com' },
   { label: 'Twitter / X', icon: '🐦', url: 'https://twitter.com' },
 ]
 
@@ -22,17 +22,18 @@ const NAV_LINKS = [
 
 // Map top-bar labels to routes
 const TOP_LINK_ROUTES = {
-  'Students':       '/students',
+  'Students': '/students',
   'Faculty & Staff': '/faculty',
-  'Visitors':        '/visitors',
-  'Alumni':          '/alumni',
+  'Visitors': '/visitors',
+  'Alumni': '/alumni',
 }
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen]   = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const [socialOpen, setSocialOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [topBarOpen, setTopBarOpen] = useState(false)
   const { pathname } = useLocation()
   const navigate = useNavigate()
   const socialRef = useRef(null)
@@ -62,16 +63,29 @@ export default function Navbar() {
 
       {/* ── TOP UTILITY BAR (like IIT KGP orange bar) ── */}
       <div className={styles.topBar}>
-        <div className={styles.topBarInner}>
+
+        {/* Mobile toggle button for top bar — hidden on desktop */}
+        <button
+          className={styles.topBarToggle}
+          onClick={() => setTopBarOpen((v) => !v)}
+          aria-label={topBarOpen ? 'Close quick links' : 'Open quick links'}
+          aria-expanded={topBarOpen}
+        >
+          <span className={styles.topBarToggleIcon}>{topBarOpen ? '✕' : '☰'}</span>
+          <span className={styles.topBadge}>AY 2025–26</span>
+          {/* <span className={styles.topBarToggleLabel}>Quick Links</span> */}
+        </button>
+
+        {/* Desktop: always visible | Mobile: toggled by button above */}
+        <div className={`${styles.topBarInner} ${topBarOpen ? styles.topBarInnerOpen : ''}`}>
+
           <div className={styles.topBarLeft}>
-            {/* Already present in main brand bar  */}
-            {/* <Link to="/" className={styles.topHomeIcon} aria-label="Home">🏠</Link>  */}
             {TOP_LINKS.map((l) => {
               const route = TOP_LINK_ROUTES[l]
               const isActive = route && pathname === route
               const cls = [styles.topLink, isActive ? styles.topLinkActive : ''].join(' ')
               return route
-                ? <Link key={l} to={route} className={cls}>{l}</Link>
+                ? <Link key={l} to={route} className={cls} onClick={() => setTopBarOpen(false)}>{l}</Link>
                 : <span key={l} className={cls}>{l}</span>
             })}
           </div>
@@ -108,16 +122,16 @@ export default function Navbar() {
             {/* ── SEARCH ── */}
             {searchOpen
               ? <form className={styles.searchForm} onSubmit={handleSearch}>
-                  <input
-                    autoFocus
-                    className={styles.searchInput}
-                    placeholder="Search…"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                  <button type="submit" className={styles.searchBtn} aria-label="Search">🔍</button>
-                  <button type="button" className={styles.searchBtn} onClick={() => { setSearchOpen(false); setSearchQuery('') }} aria-label="Close">✕</button>
-                </form>
+                <input
+                  autoFocus
+                  className={styles.searchInput}
+                  placeholder="Search…"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button type="submit" className={styles.searchBtn} aria-label="Search">🔍</button>
+                <button type="button" className={styles.searchBtn} onClick={() => { setSearchOpen(false); setSearchQuery('') }} aria-label="Close">✕</button>
+              </form>
               : <span className={styles.topLink} onClick={() => setSearchOpen(true)} aria-label="Open search">🔍</span>
             }
           </div>
@@ -129,46 +143,56 @@ export default function Navbar() {
       <div className={styles.brandBar}>
         <div className={styles.brandBarInner}>
 
-          {/* Logo + Name */}
-          <Link to="/" className={styles.brand}>
-            <div className={styles.logoCircle}>
-              {/* <span className={styles.logoText}>AFES</span> */}
-              {/* <span className={styles.logoSub}>IIT KGP</span> */}
-              <img src = "/logo.png" />
-            </div>
-            <div className={styles.brandText}>
-              <div className={styles.brandName}>Agricultural &amp; Food Engineering Society</div>
-              <div className={styles.brandSub}>Indian Institute of Technology Kharagpur</div>
-            </div>
-          </Link>
+          {/* Left: logo */}
+          <div className={styles.brandLeft}>
+            <Link to="/" className={styles.brand}>
+              <div className={styles.logoCircle}>
+                <img src="/logo.png" />
+              </div>
+            </Link>
+          </div>
 
-          {/* Main nav links */}
-          <nav className={styles.mainNav}>
-            <ul className={styles.navList}>
-              {NAV_LINKS.map(({ label, to }) => (
-                <li key={to}>
-                  <NavLink
-                    to={to}
-                    end={to === '/'}
-                    className={({ isActive }) =>
-                      [styles.navLink, isActive ? styles.navLinkActive : ''].join(' ')
-                    }
-                  >
-                    {label}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Center: site name */}
+          <div className={styles.brandCenter}>
+            <div className={styles.brandName}>Agricultural &amp; Food Engineering Society</div>
+            <div className={styles.brandSub}>Indian Institute of Technology Kharagpur</div>
+          </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className={styles.hamburger}
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? '✕' : '☰'}
-          </button>
+          {/* Right: nav links + hamburger */}
+          <div className={styles.brandControls}>
+            <nav className={styles.mainNav}>
+              <ul className={styles.navList}>
+                {NAV_LINKS.map(({ label, to }) => (
+                  <li key={to}>
+                    <NavLink
+                      to={to}
+                      end={to === '/'}
+                      className={({ isActive }) =>
+                        [styles.navLink, isActive ? styles.navLinkActive : ''].join(' ')
+                      }
+                    >
+                      {label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            {/* Mobile hamburger */}
+            <button
+              className={styles.hamburger}
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
+              <span className={styles.hamburgerIcon} aria-hidden="true">
+                {menuOpen ? '✕' : '☰'}
+              </span>
+              <span className={styles.hamburgerLabel}>
+                {menuOpen ? 'Close' : 'Menu'}
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 

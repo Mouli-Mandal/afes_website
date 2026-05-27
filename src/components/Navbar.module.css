@@ -9,6 +9,11 @@
     box-shadow: 0 2px 16px rgba(10, 35, 66, 0.18);
 }
 
+/* ── TOP BAR TOGGLE (mobile only, hidden on desktop) ── */
+.topBarToggle {
+    display: none;
+}
+
 /* ── TOP UTILITY BAR ── */
 .topBar {
     background: var(--blue-deep);
@@ -194,7 +199,7 @@
     /* max-width: var(--max-width); */
     margin: 0 auto;
     padding: 0 2rem;
-    height: 72px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -223,6 +228,7 @@
     border: 1.5px solid var(--blue-deep);
     box-shadow: 0 4px 14px rgba(14, 116, 144, 0.4);
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .logoText {
@@ -245,25 +251,55 @@
     flex-direction: column;
 }
 
+/* Layout regions for brand bar */
+.brandLeft {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+.brandCenter {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    min-width: 0;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.brandControls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+}
+
 .brandName {
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--blue-deep);
-    line-height: 1.2;
+    line-height: 1.25;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .brandSub {
-    font-size: 10.5px;
+    font-size: 11px;
     color: var(--sea);
     font-weight: 500;
     letter-spacing: 0.04em;
-    margin-top: 1px;
+    margin-top: 2px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* ── MAIN NAV ── */
 .mainNav {
-    flex: 1;
     display: flex;
     justify-content: flex-end;
 }
@@ -320,21 +356,37 @@
 /* ── HAMBURGER ── */
 .hamburger {
     display: none;
-    background: none;
+    background: var(--white);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    width: 38px;
-    height: 38px;
-    font-size: 18px;
+    min-width: 48px;
+    min-height: 42px;
+    font-size: 16px;
     color: var(--blue-deep);
     cursor: pointer;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    gap: 8px;
+    padding: 0 12px;
+    flex-shrink: 0;
+    z-index: 250;
 }
 
 .hamburger:hover {
-    background: var(--off-white);
+    background: rgba(239, 246, 255, 0.9);
+}
+
+.hamburgerIcon {
+    display: inline-flex;
+}
+
+.hamburgerLabel {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--blue-deep);
 }
 
 /* ── MOBILE MENU ── */
@@ -369,7 +421,7 @@
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .mainNav {
         display: none;
     }
@@ -383,18 +435,154 @@
     }
 
     .brandBarInner {
-        margin:0 auto;
-        padding:  2rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+        height: 70px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
 
+    .brand {
+        flex-shrink: 0;
+    }
+
+    .brandCenter {
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: none;
+        padding: 0 0.5rem;
+    }
+
+    .brandControls {
+        flex-shrink: 0;
+    }
+
+    .brandText {
+        min-width: 0;
     }
 }
 
 @media (max-width: 480px) {
-    .topBar {
+
+    /* Toggle button: visible only on mobile */
+    .topBarToggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 0 0.75rem;
+        height: 36px;
+        cursor: pointer;
+        gap: 8px;
+    }
+
+    .topBarToggleIcon {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        flex-shrink: 0;
+    }
+
+    .topBarToggleLabel {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-left: auto;
+    }
+
+    /* Hide the full top bar content by default on mobile */
+    .topBarInner {
         display: none;
+        flex-direction: column;
+        padding: 0;
+        height: auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Show when toggled */
+    .topBarInnerOpen {
+        display: flex;
+    }
+
+    .topBarLeft,
+    .topBarRight {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .topBarLeft {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .topLink {
+        font-size: 13px;
+        padding: 10px 1rem;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        justify-content: flex-start;
+    }
+
+    .topLink:last-child {
+        border-bottom: none;
+    }
+
+    /* Hide the duplicate AY badge inside the dropdown (it's on the toggle) */
+    .topBarRight .topBadge {
+        display: none;
+    }
+
+    .searchForm {
+        padding: 8px 1rem;
+        height: auto;
+    }
+
+    .searchInput {
+        flex: 1;
+        width: auto;
+    }
+
+    .brandBar {
+        display: flex !important;
+    }
+
+    .brandBarInner {
+        height: 70px;
+        padding: 0 0.75rem;
+    }
+
+    .brandName {
+        font-size: 12px;
     }
 
     .brandSub {
         display: none;
+    }
+
+    .logoCircle {
+        width: 50px;
+        height: 50px;
+    }
+
+    .brand {
+        gap: 8px;
+    }
+
+    .hamburger {
+        min-width: auto;
+        padding: 0 8px;
+    }
+
+    .hamburgerLabel {
+        display: none;
+    }
+
+    .hamburgerIcon {
+        font-size: 18px;
     }
 }
